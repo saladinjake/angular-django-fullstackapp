@@ -3,7 +3,7 @@ from django.conf.urls import url
 from learning import views
 
 urlpatterns = [
-    url(r'^api/tutorials$', views.tutorial_list),
-    url(r'^api/tutorials/(?P<pk>[0-9]+)$', views.tutorial_detail),
-    url(r'^api/tutorials/published$', views.tutorial_list_published)
+    url(r'^api/tutorials$', views.post_list),
+    url(r'^api/tutorials/(?P<pk>[0-9]+)$', views.post_detail),
+    url(r'^api/tutorials/published$', views.post_list_published)
 ]
