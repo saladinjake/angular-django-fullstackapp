@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testdb',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -142,3 +142,9 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8081',
 )
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES":
+        ["rest_framework.permissions.AllowAny",],
+    "DEFAULT_PARSER_CLASSES":["rest_framework.parsers.JSONParser",],
+    }
