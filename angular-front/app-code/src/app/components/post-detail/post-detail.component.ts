@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/services/post-service.service';
+import { PostService } from '../../services/post-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -44,7 +44,7 @@ export class PostDetailComponent implements OnInit {
     this.postService.updatePost(this.currentPost.id, data)
       .subscribe(
         response => {
-          this.currentTutorial.published = status;
+          this.currentPost.published = status;
           console.log(response);
         },
         error => {
