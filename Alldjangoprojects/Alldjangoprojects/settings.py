@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Tutorials application
     'learning.apps.LearningConfig',
+    # Tutorials application
+    'books.apps.BooksConfig',
     # CORS
     'corsheaders',
 ]
@@ -85,12 +87,12 @@ WSGI_APPLICATION = 'Alldjangoprojects.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'testdb',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'saladin123!@#',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -140,7 +142,7 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8081',
+    'http://localhost:4200',
 )
 
 REST_FRAMEWORK = {
