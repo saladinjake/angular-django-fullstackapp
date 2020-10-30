@@ -4,7 +4,14 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-
+{% extends "base.html" %}
+{% block title_html %}
+ Home Page
+{% endblock %}
+{% block h1 %}
+ {{ bloc.super }}PM +
+{% endblock %}
+{% block article_content %}
 <div class="card container"></div>
     <nav class="navbar navbar-default custom-header">
         <div class="container-fluid">
@@ -33,3 +40,25 @@
     <div class="col-md-4"></div>
     <div class="col-md-4"></div>
     <div class="row hidden"></div>
+
+
+
+
+
+
+
+
+
+
+    <br><br><br>
+<article class="bg-secondary mb-3">
+<div class="card-body text-center">
+    <h4 class="text-white">yes foot in <br> footer </h4>
+<p class="h5 text-white"> this is some kick butts footer story</p>   <br>
+<p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com
+ <i class="fa fa-window-restore "></i></a></p>
+</div>
+<br><br><br>
+</article>
+
+{% endblock %}
