@@ -6,6 +6,11 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
+@api_view(['GET'])
+def welcome(request):
+    return JsonResponse({"message":"welcome to our django api endpoints"})
+
+
 @api_view(['GET', 'POST', 'DELETE'])
 def post_list(request):
     # GET list of tutorials, POST a new tutorial, DELETE all tutorials
