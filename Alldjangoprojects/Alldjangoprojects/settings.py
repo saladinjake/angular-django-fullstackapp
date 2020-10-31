@@ -144,8 +144,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+ os.path.join(PROJECT_ROOT, '../simpleprojectmanagement/templates/public/static'),
+)
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
