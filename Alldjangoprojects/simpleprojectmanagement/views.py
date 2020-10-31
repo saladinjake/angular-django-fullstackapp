@@ -24,7 +24,7 @@ def register(request):
 def create_project(request):
      if request.POST:
          if 'title' in request.POST:
-             name = request.POST.get('title', '')
+             title = request.POST.get('title', '')
          else:
              error=True
          if 'description' in request.POST:
@@ -32,11 +32,11 @@ def create_project(request):
          else:
              error=True
          if 'client_name' in request.POST:
-             password = request.POST.get('client_name', '')
+             client_name = request.POST.get('client_name', '')
          else:
              error=True
          if not error:
-             new_project = Project(title="Build toptal client", description="Toptal project crud app",client_name="Toptal") # line 2
+             new_project = Project(title=title, description=description,client_name=client_name) # line 2
              new_project.save() # line 3
              return render(request, 'public/create_project.html', {'action':'Save successful'})
          else:

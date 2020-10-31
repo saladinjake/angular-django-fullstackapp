@@ -1,0 +1,30 @@
+{% extends "public/base.html" %}
+{% block title_html %}
+ Current Project
+{% endblock %}
+{% block h1 %}
+ {{ bloc.super }}Companies Projects
+{% endblock %}
+{% block article_content %}
+
+<div class="container">
+    <div class="row">
+		<form role="form" class="col-md-9 go-right" action={ url 'project_update-' {{project.id}}  }>
+			<h2>Project form</h2>
+            <p>Update a new project.</p>
+			<div class="form-group">
+			<input id="name" name="name" type="text" class="form-control" required value="{{project.title}}">
+			<label for="name">Project Title</label>
+		</div>
+		<div class="form-group">
+			<input id="phone" name="phone" type="tel" class="form-control" required value="{{project.client_name}}">
+			<label for="phone">Client Name</label>
+		</div>
+		<div class="form-group">
+			<textarea id="message" name="phone" class="form-control" required> {{project.description}}</textarea>
+			<label for="message">Description</label>
+		</div>
+		</form>
+
+</div>
+{% endblock %}
