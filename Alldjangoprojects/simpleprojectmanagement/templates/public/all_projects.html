@@ -1,4 +1,4 @@
-% extends "public/base.html" %}
+{% extends "public/base.html" %}
 {% block title_html %}
  All Projects
 {% endblock %}
@@ -8,7 +8,7 @@
 {% block article_content %}
  {% if all_projects|length > 0 %}
 
-
+ {% for project in all_projects %}
 <div class="container">
 
             <div class="col-sm-12">
@@ -22,11 +22,11 @@
 
                                 <h5>{{ project.title }}</h5>
                                 <p>{{project.description}}</p>
-                                <p>For: {{prooject.client_name}}</p>
+                                <p>For: {{project.client_name}}</p>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="{ url 'project_detail-' project.id  }" class="btn btn-lg btn-block btn-default">See Detail</a>
+                            <a href="project_detail/{{project.id}}" class="btn btn-lg btn-block btn-default">See Detail</a>
                         </div>
                      </div>
                 </div>

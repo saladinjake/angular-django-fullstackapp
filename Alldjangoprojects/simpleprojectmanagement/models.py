@@ -6,7 +6,12 @@ class Project(models.Model):
      description = models.CharField(max_length=1000, verbose_name="Description")
      client_name = models.CharField(max_length=1000, verbose_name="owner")
      def __str__(self):
-        return self.project_name
+        return self.title
+     class Meta:
+        verbose_name = "project"
+        verbose_name_plural = "projects"
+        ordering = ('id',)
+        #db_tables =
 
 
 class UserProfile(models.Model):
