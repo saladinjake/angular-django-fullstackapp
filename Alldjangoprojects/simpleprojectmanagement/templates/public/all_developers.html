@@ -1,0 +1,44 @@
+{% extends "public/base.html" %}
+{% block title_html %}
+ All Projects
+{% endblock %}
+{% block h1 %}
+ {{ bloc.super }}Companies Projects
+{% endblock %}
+{% block article_content %}
+ {% if all_developers|length > 0 %}
+
+ {% for developer in all_developers %}
+<div class="container">
+
+            <div class="col-sm-12">
+
+                <div class="bs-calltoaction bs-calltoaction-default">
+                    <div class="row">
+                        <div class="col-md-9 cta-contents">
+
+                            <h1 class="cta-title">{{ developer.id }}</h1>
+                            <div class="cta-desc">
+
+                                <h5>{{ developer.username }}</h5>
+                                <p> Supervisor: {{developer.supervisedby}}</p>
+                                <p>Experience: {{developer.experience_role}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 cta-button">
+                            <a href="developer_detail/{{developer.id}}" class="btn btn-lg btn-block btn-default">See Detail</a>
+                        </div>
+                     </div>
+                </div>
+
+
+
+            </div>
+        </div>
+ {% endfor %}
+
+ {% else %}
+    <span>No developer found.</span>
+
+ {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "public/base.html" %}
+{% block title_html %}
+Create New Developer
+{% endblock %}
+{% block h1 %}
+ {{ bloc.super }}New Developer
+{% endblock %}
+{% block article_content %}
+
+<div class="container">
+    <div class="row">
+    <p>  {{action}}</p>
+		<form role="form" class="col-md-9 go-right" method="post" action="create_developer">
+      {% csrf_token %}
+      {{form.as_table}}
+      <br/><br/>
+
+    <input type="submit" value="Create" />
+		</form>
+
+</div>
+{% endblock %}

@@ -5,6 +5,8 @@ from django.urls import reverse
 # Create your views here.
 from simpleprojectmanagement.models import Project,Developer,Supervisor, UserProfile, Task
 
+# now lets import the django forms
+from  simpleprojectmanagement.forms.generic import NewUserForm, NewDeveloperForm, NewSupervisorForm
 """
  guest and auth pages
 """
@@ -103,23 +105,64 @@ def project_flush(request):
 
 
 '''
- 2 developer crud operations with django forms
+ 2 developer crud operations with django forms.Form
 '''
 
 def create_developer(request):
-    return render(request,'public/djangoforms/create_developer.html')
+    if request.POST:
+        form  = NewDeveloperForm(request.POST)
+        if form.is_valid():
+            phone = form.cleaned_data['phone']
+            age = form.cleaned_data['age']
+            last_login = form.cleaned_data['last_login']
+            email = form.cleaned_data['email']
+            experience_role = form.cleaned_data['experience_role']
+            date_created = form.cleaned_data['date_created']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            supervisedby = form.cleaned_data['supervisedby']
+            new_developer = Developer(
+            username=username,email=email,password=password,
+            phone=phone, age =age,last_login=last_login,date_created =date_created,
+            experience_role=experience_role ,
+            supervisedby=supervisedby
+            )
+            new_developer.save()
+            return render(request,'public/djangoformbuilder/create_developer.html',{'form': form, 'success':True})
+        else:
+            return render(request,'public/djangoformbuilder/create_developer.html',{'form': form, 'error':True})
+    else:
+        form  = NewDeveloperForm(request.POST)
+        return render(request,'public/djangoformbuilder/create_developer.html',{'form': form})
+
+
+def get_all_developers(request):
+    all_developers = Developer.objects.all()
+    return render(request, 'public/all_developers.html', {'message': "All projects", 'all_developers': all_developers})
+
+
+def developer_detail(request):
+    developer = Developer.objects.get(id=pk)
+    return render(request, 'public/project_detail.html', {'project' : developer})
+
+def developer_update(request):
+    pass
+
+
+def developer_delete(request):
+    developer = Developer.objects.get(id = pk)
+    developer.delete() # line 1
+    return HttpResponseRedirect(reverse('all_developers'))
+
+'''
+ 3 supervisor crud operations django forms.ModelForm and cbvs
+'''
+
 
 
 
 '''
- 3 supervisor crud operations class based views
-'''
-
-
-
-
-'''
- 4 user crud operations
+ 4 user crud operations using cbvs
 '''
 
 
