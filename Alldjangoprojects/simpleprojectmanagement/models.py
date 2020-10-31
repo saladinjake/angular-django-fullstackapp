@@ -25,15 +25,15 @@ class Supervisor(UserProfile):
      specialisation = models.CharField(max_length=50, verbose_name="Specialisation")
 
 class Developer(UserProfile):
-     supervisor = models.ForeignKey(Supervisor, verbose_name="Supervisor")
+     supervisedby = models.ForeignKey(Supervisor, verbose_name="Supervisor", related_name="heyme", on_delete=models.CASCADE,)
 
 class Task(models.Model):
      title = models.CharField(max_length=50, verbose_name="Title")
      description = models.CharField(max_length=1000, verbose_name="Description")
      time_elapsed = models.IntegerField(verbose_name="Elapsed time" , null=True, default=None, blank=True)
      importance = models.IntegerField(verbose_name="Importance")
-     project = models.ForeignKey(Project, verbose_name="Project" ,null=True, default=None, blank=True)
-     app_user = models.ForeignKey(UserProfile, verbose_name="User")
+     project = models.ForeignKey(Project, verbose_name="Project" ,null=True, default=None, blank=True, on_delete=models.CASCADE)
+     app_user = models.ForeignKey(UserProfile, verbose_name="User" , related_name="hey", on_delete=models.CASCADE)
      #Relationship to add to the Task model
      developers = models.ManyToManyField(Developer ,through="DevelopersOnTask")
 
@@ -41,6 +41,6 @@ class Task(models.Model):
         return self.title
 
 class DevelopersOnTask(models.Model):
-     developer = models.ForeignKey(Developer)
-     task = models.ForeignKey(Task)
+     developer = models.ForeignKey(Developer, on_delete=models.CASCADE)
+     task = models.ForeignKey(Task, on_delete=models.CASCADE)
      time_elapsed_dev = models.IntegerField(verbose_name="Time elapsed", null=True, default=None,blank=True)

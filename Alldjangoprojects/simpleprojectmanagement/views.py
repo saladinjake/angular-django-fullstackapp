@@ -72,11 +72,19 @@ def project_flush(request):
     return render(request, 'public/project_detail.html', {'action' : 'Delete tasks'})
 
 
+
+
+
+
+
+
+
 '''
  developer crud operations
 '''
 
-
+def create_developer(request):
+    return render(request,'public/djangoforms/create_developer.html')
 
 
 

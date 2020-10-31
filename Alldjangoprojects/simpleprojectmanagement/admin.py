@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from simpleprojectmanagement.models import UserProfile, Project, Task ,
-Supervisor , Developer
+from simpleprojectmanagement.models import UserProfile, Project, Task , Supervisor , Developer
 admin.site.register(UserProfile)
 admin.site.register(Project)
 admin.site.register(Task)

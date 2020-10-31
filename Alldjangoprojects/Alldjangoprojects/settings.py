@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'learning.apps.LearningConfig',
     # Tutorials application
     'books.apps.BooksConfig',
+    'simpleprojectmanagement.apps.SimpleprojectmanagementConfig',
     # CORS
     'corsheaders',
 ]
