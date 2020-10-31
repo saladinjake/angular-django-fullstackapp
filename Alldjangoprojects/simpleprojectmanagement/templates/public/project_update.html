@@ -8,6 +8,7 @@
 {% block article_content %}
 
 <div class="container">
+     <a href="../create_project">Create New Project</a>
     <div class="row">
 		<form role="form" class="col-md-9 go-right" method="post" action="../project_update/{{project.id}}">
       {% csrf_token %}

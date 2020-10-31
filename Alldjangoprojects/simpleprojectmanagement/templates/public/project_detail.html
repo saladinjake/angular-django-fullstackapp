@@ -8,7 +8,8 @@
 {% block article_content %}
 
 <div class="container">
-	<br>  <p class="text-center">Detail view for <a href="http://bootstrap-ecommerce.com/"> {{ project.id }}</a></p>
+   <a href="../create_project">Create New Project</a>
+	<br>  <p class="text-center">Detail view for  {{ project.id }}</p>
 <hr>
 
 
@@ -26,12 +27,7 @@
 <article class="card-body p-5">
 	<h3 class="title mb-3">{{project.title}}</h3>
 
-<p class="price-detail-wrap">
-	<span class="price h3 text-warning">
-		<span class="currency">US $</span><span class="num">1299</span>
-	</span>
-	<span>/per kg</span>
-</p> <!-- price-detail-wrap .// -->
+ <!-- price-detail-wrap .// -->
 <dl class="item-property">
   <dt>Description</dt>
   <dd><p>{{project.description}}</p></dd>
