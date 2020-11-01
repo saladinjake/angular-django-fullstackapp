@@ -1,0 +1,27 @@
+{% extends "public/base.html" %}
+{% block title_html %}
+Edit  Developer
+{% endblock %}
+{% block h1 %}
+ {{ bloc.super }}New Developer
+{% endblock %}
+{% block article_content %}
+
+<div class="container">
+    <div class="row">
+    <p>  {{action}}</p>
+		<form role="form" class="col-md-9 go-right" method="post" action="create_developer">
+      {% if error %}
+         <p> ERROR IN FORM SUBMISSION</p>
+       {% elif  success %}
+         <p> Successfully created resouce</p>
+      {% endif %}
+      {% csrf_token %}
+      {{form.as_table}}
+      <br/><br/>
+
+    <input type="submit" value="Create" />
+		</form>
+
+</div>
+{% endblock %}

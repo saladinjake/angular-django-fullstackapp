@@ -8,8 +8,8 @@
 {% block article_content %}
 
 <div class="container">
-   <a href="../create_project">Create New Project</a>
-	<br>  <p class="text-center">Detail view for  {{ project.id }}</p>
+   <a href="../create_developer">Add Developer</a>
+	<br>  <p class="text-center">Detail view for  {{ developer.id }}</p>
 <hr>
 
 
@@ -25,16 +25,25 @@
 		</aside>
 		<aside class="col-sm-7">
 <article class="card-body p-5">
-	<h3 class="title mb-3">{{developer.username}}</h3>
+	<h3 class="title mb-3">You are logged in as {{developer.username}}</h3>
 
  <!-- price-detail-wrap .// -->
 <dl class="item-property">
-  <dt>Description</dt>
+  <dt>Detail Info</dt>
   <dd><p>{{developer.supervisedby}}</p></dd>
+  <dd><p>User ID :{{developer.id}}</p></dd>
 </dl>
 <dl class="param param-feature">
-  <dt>clientName#</dt>
-  <!-- <dd>{{developer.client_name}}</dd> -->
+  <dt>Last Login</dt>
+  <p>{{developer.last_login}}</p>
+  <dt>Age</dt>
+  <p>{{developer.age}}</p>
+
+  <dt>Last Login</dt>
+  <p>{{developer.last_login}}</p>
+  <dd>Experience {{developer.experience_role}}</dd>
+
+  <dd>Phone: {{developer.phone}}</dd>
 </dl>  <!-- item-property-hor .// -->
 
 <hr>

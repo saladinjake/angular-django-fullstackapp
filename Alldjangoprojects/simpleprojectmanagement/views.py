@@ -6,7 +6,7 @@ from django.urls import reverse
 from simpleprojectmanagement.models import Project,Developer,Supervisor, UserProfile, Task
 
 # now lets import the django forms
-from  simpleprojectmanagement.forms.generic import NewUserForm, NewDeveloperForm, NewSupervisorForm
+from  simpleprojectmanagement.forms.generic import NewUserForm, NewDeveloperForm, NewSupervisorForm, EditDeveloperForm, EditUserForm, EditSupervisorForm
 """
  guest and auth pages
 """
@@ -141,16 +141,55 @@ def get_all_developers(request):
     return render(request, 'public/all_developers.html', {'message': "All projects", 'all_developers': all_developers})
 
 
-def developer_detail(request):
+def developer_detail(request,pk):
     developer = Developer.objects.get(id=pk)
-    return render(request, 'public/project_detail.html', {'project' : developer})
+    return render(request, 'public/developer_detail.html', {'developer' : developer})
 
-def developer_update(request):
-    pass
+def developer_update(request,pk):
+    '''This time i am using django forms not html forms '''
+    developer = Developer.objects.get(id=pk)
+    initialValues ={
+      'username':developer.username,
+      'email':developer.email,
+      'password':developer.password,
+      'phone':developer.phone,
+      'age' :developer.age,
+      'last_login':developer.last_login,
+      'date_created' :developer.date_created,
+      'experience_role':developer.experience_role ,
+      'supervisedby':developer.supervisedby
+
+    }
+    error = success = None
+    form = EditDeveloperForm(initial=initialValues)
+    #now if there is a post for update
+    if request.POST:
+        form  = EditDeveloperForm(request.POST)
+        if form.is_valid():
+            developer.phone = form.cleaned_data['phone']
+            developer.age = form.cleaned_data['age']
+            developer.last_login = form.cleaned_data['last_login']
+            developer.email = form.cleaned_data['email']
+            developer.experience_role = form.cleaned_data['experience_role']
+            developer.date_created = form.cleaned_data['date_created']
+            developer.username = form.cleaned_data['username']
+            developer.password = form.cleaned_data['password']
+            developer.supervisedby = form.cleaned_data['supervisedby']
+
+            developer.save()
+            return render(request,'public/djangoformbuilder/developer_update.html',{'form': form, 'success':True})
+        else:
+            return render(request,'public/djangoformbuilder/developer_update.html',{'form': form, 'error':True})
+    else:
+        form  = EditDeveloperForm(initial=initialValues)
+        return render(request,'public/djangoformbuilder/developer_update.html',{'form': form}) #initial
+
+    return render(request, 'public/djangoformbuilder/developer_update.html', {"form": form}) #initial form
 
 
 def developer_delete(request):
     developer = Developer.objects.get(id = pk)
+
     developer.delete() # line 1
     return HttpResponseRedirect(reverse('all_developers'))
 
